@@ -6,13 +6,18 @@ Vue.use(VueRouter)
 //配置静态路由
 const routes = [{
     path: '/',
-    redirect: '/init'
-},
+    redirect: '/login'
+    },
     {
         path: '/init',
-        name: 'init',
+        name: 'Init',
         component: () => import('@/components/HelloWorld.vue')
     },
+    {
+        path: '/login',
+        name: 'Login',
+        component: () => import('@/view/login')
+    }
 ]
 
 const router = new VueRouter({
