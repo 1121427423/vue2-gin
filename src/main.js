@@ -17,7 +17,6 @@ Vue.config.productionTip = false
 Vue.use(ElementUI, {size: 'small', zIndex: 3000});
 //使用自带国际化
 Vue.use(ElementUI, {locale})
-
 new Vue({
   render: h => h(App),
   store,

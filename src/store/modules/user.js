@@ -1,3 +1,6 @@
+import router from "@/router";
+import {uuid} from 'vue-uuid';
+
 export const user = {
     //解决命名冲突
     namespaced: true,
@@ -14,12 +17,23 @@ export const user = {
     mutations: {
         ChangeNickName(state) {
             state.userInfo.nickName = 'Vue 管家'
-        }
+        },
+        setToken(state) {
+            state.token = uuid.v1()
+        },
     },
     actions: {
         changeNickName({commit}) {
             commit('ChangeNickName')
-        }
+        },
+        async LoginIn({commit}, loginInfo) {
+            if (loginInfo.username === 'admin' && loginInfo.password === '111qqq' && loginInfo.captcha === '602503') {
+                commit('setToken')
+                await router.push('home')
+                return true
+            }
+            return false
+        },
     },
     getters: {
         userInfo(state) {
